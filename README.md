@@ -1,4 +1,4 @@
-# Project's name
+# Hungie Games
 
 ## Description
 Brief description of the project
