@@ -28,6 +28,17 @@ Classes and methods definition.
 - buildGameScreen(){}
 - buildGameOverScreen(){}
 
+**Game.js**
+- game (){}
+- peanutButterLoop(){}
+- cucumberLoop(){}
+- pumpkinLoop(){}
+- chocolateLoop(){}
+- checkCollisions(){}
+- clearCanvas(){}
+- drawCanvas(){}
+- GameOver(){}
+
 **dog.js**
 - dog() {this.x; this.y; this.direction; this.size}
 - draw() {}
@@ -72,15 +83,17 @@ Definition of the different states and their transition (transition functions)
 - game - buildCanvas
 - game - updateCanvas
 - game - drawCanvas
-- tentacle - draw
-- tentacle - move
-- game - addTentacle
-- ship - draw
-- ship - move
-- ship - shoot
-- game - addShip
-- cannonball - draw
-- cannonball - move
+- cucumber - draw
+- cucumber - move
+- pumpkin - draw
+- pumpkin- move
+- peanut butter - draw
+- peanut butter- move
+- chocolate- draw
+- chocolate- move
+- game - addFood
+- dog - draw
+- dog - move
 - game - checkCollision
 - game - GameOver
 - game - addEventListener
@@ -90,13 +103,13 @@ Definition of the different states and their transition (transition functions)
 
 
 ### Trello
-[Link url](https://trello.com)
+https://trello.com/b/SkBi1kyn/project-1-hungie-games
 
 
 ### Git
 URls for the project repo and deploy
-[Link Repo](http://github.com)
-[Link Deploy](http://github.com)
+https://github.com/kmstamey/project-number-1/edit/master/README.md
+
 
 
 ### Slides
