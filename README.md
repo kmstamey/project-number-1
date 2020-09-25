@@ -23,8 +23,37 @@ MVP definition, deliverables.
 ## Data structure
 Classes and methods definition.
 
+**main.js**
+- buildSplashScreen(){}
+- buildGameScreen(){}
+- buildGameOverScreen(){}
 
-## States y States Transitions
+**dog.js**
+- dog() {this.x; this.y; this.direction; this.size}
+- draw() {}
+- move() {}
+
+**peanut butter.js**
+- peanutButter(){this.x; this.y; this.direction; this.size}
+- draw(){}
+- move(){}
+
+**cucumber.js**
+- cucumber(){this.x; this.y; this.direction; this.size}
+- draw(){}
+- move(){}
+
+**pumpkin.js**
+- pumpkin(){this.x; this.y; this.direction; this.size}
+- draw(){}
+- move(){}
+
+**chocoate.js**
+- chocolate(){this.x; this.y; this.direction; this.size}
+- draw(){}
+- move(){}
+
+## States & Transitions
 Definition of the different states and their transition (transition functions)
 
 - splashScreen
