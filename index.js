@@ -23,9 +23,20 @@ const allFoods= [
     {name:"chocolate", isBad: true, image: "images/chocolate.png"}
 ]
 // images------//
+        
+let splashImage = new Image();
+    splashImage.src="images/splash screen.png";
 
+let kitchenImage = new Image();
+    kitchenImage.src="images/kitchen.jpg";
 
+let endScreen = new Image();
+    endScreen.src="images/winning background.png"
 
+let bobo= new Image();
+    bobo.src="images/dog-12.png"
+
+    createjs.Sound.registerSound("sounds/alarm.wav", "alarm");
 
 //---------Event Listeners-------------//
 
@@ -126,7 +137,7 @@ class Food {
 function startGame(){
     // ctx.drawImage(kitchen, 0, 0 );
     // ctx.drawImage(dog, dogX, dogY );
-
+    createjs.Sound.stop("alarm");
     
 
     setInterval(drawScreen, 20);
@@ -141,6 +152,7 @@ function startGame(){
 function gameOver(){
      alert("Game Over!")
      gameStatus = "over";
+     createjs.Sound.play("alarm");
 }
 
 function drawScreen(){
@@ -155,14 +167,22 @@ function drawScreen(){
 }
 
 function drawSplash(){
+    context.drawImage(splashImage, 0, 0, canvas.width, canvas.height);
+    context.fillStyle="#fff";
+    context.fillText('Hungie Games', (canvas.width/2)+5, (canvas.height/2)+5);
     context.fillStyle="#000";
-    context.font = '24px serif';
-    context.fillText('Im a splash', canvas.width-150, 50);
+    context.font = '56px serif';
+    context.textAlign = "center";
+    context.fillText('Hungie Games', canvas.width/2, canvas.height/2);
+    
 }
 
 function drawGame(){
+    context.textAlign="left";
+    context.drawImage(kitchenImage, 0, 0, canvas.width, canvas.height);
     context.fillStyle = "#f00";
-    context.fillRect(dogpos, canvas.height- 10- dogSizeH, dogSizeW, dogSizeH);
+    context.drawImage(bobo, dogpos, canvas.height- 10- dogSizeH, dogSizeW, dogSizeH);
+
     for (let foodId in activeFoods){
        let food = activeFoods[foodId];
        food.draw();
@@ -177,9 +197,11 @@ function drawGame(){
 }
 
 function drawOver(){
+    context.textAlign="center";
+    context.drawImage(endScreen, 0, 0, canvas.width, canvas.height);
     context.fillStyle="#000";
     context.font = '24px serif';
-    context.fillText('Im dead', canvas.width-150, 50);
+    context.fillText('Game Over', canvas.width/2, canvas.height/2);
 }
 function addFood(isBad, foodName){
     nextFoodId++;
