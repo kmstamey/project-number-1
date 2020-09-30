@@ -16,7 +16,7 @@ let score = 0;
 let lives = 3;
 let isGameOver= false;
 
-let foodSpeed = 5000;
+let foodSpeed = 2200;
 let foodInterval= null;
 
 const allFoods= [
@@ -70,11 +70,14 @@ document.addEventListener("keydown", (e)=> {
 
 
 canvas.addEventListener("click", (e)=> {
-    createjs.Sound.play("background");
-    gameStatus = "start";
-    score = 0;
-    lives = 3;
-    foodSpeed = 5000;
+
+    if (gameStatus != "start") {
+        createjs.Sound.play("background");
+        gameStatus = "start";
+        score = 0;
+        lives = 3;
+        foodSpeed = 5000;
+    }
 });
 
 
@@ -147,7 +150,16 @@ class Food {
     }
 }
 
+function addFoodInterval() {
+    if (gameStatus == "start") {
+        addFood();
+    }
 
+    setTimeout(
+        addFoodInterval,
+        foodSpeed
+    );
+}
 
 //-----functions----//
 function startGame(){
@@ -158,30 +170,17 @@ function startGame(){
     
     setInterval(drawScreen, 20);
 
-    
-    foodInterval = setInterval(() => {
-        if (gameStatus == "start"){
-            addFood();
-            }   
-        }, 
+    setTimeout(
+        addFoodInterval,
         foodSpeed
     );
 
-    setInterval(() => {
-        if (gameStatus === 'start') {
-
-            clearInterval(clearInterval);
-
-            foodSpeed -= 200;
-
-            foodInterval = setInterval(() => {
-                if (gameStatus == "start"){
-                    addFood();
-                }
-
-            }, foodSpeed);
-        }
-    },
+    setInterval(
+        () => {
+            if (gameStatus === 'start') {
+                foodSpeed -= 200;
+            }
+        },
         5000
     );
 }
