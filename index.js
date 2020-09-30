@@ -3,48 +3,51 @@ canvas.style.border = '1px solid black';
 
 let context= canvas.getContext("2d");
 
-// set of variables------
+// set of variables------//
 let gameStatus= "splash";
 let dogpos = 250;
-let dogSizeW= 75;
-let dogSizeH= 75;
+let dogSizeW= 100;
+let dogSizeH= 100;
 let nextFoodId = 0;
 let activeFoods= {};
-let foodSizeW= 25;
-let foodSizeH= 25;
+let foodSizeW= 75;
+let foodSizeH= 75;
 let score = 0;
 let lives = 3;
 let isGameOver= false;
 
 const allFoods= [
-    {name:"cucumber", isBad: false, image: "images/cucumber.png"},
-    {name:"pumpkin", isBad: false, image: "images/pumpkin.jpeg"},
+    {name:"cucumber", isBad: false, image: "images/cucumber5.png"},
+    {name:"pumpkin", isBad: false, image: "images/pumpkin3.png"},
     {name:"peanut-butter", isBad: false, image: "images/peanut-butter.png"},
-    {name:"chocolate", isBad: true, image: "images/chocolate.png"}
+    {name:"chocolate", isBad: true, image: "images/chocolate3.png"}
 ]
 // images------//
         
 let splashImage = new Image();
-    splashImage.src="images/splash screen.png";
+    splashImage.src="images/splash2.png";
 
 let kitchenImage = new Image();
-    kitchenImage.src="images/kitchen.jpg";
+    kitchenImage.src="images/kitchen3.jpg";
 
 let endScreen = new Image();
-    endScreen.src="images/winning background.png"
+    endScreen.src="images/gameover2.png"
 
 let bobo= new Image();
     bobo.src="images/dog-12.png"
 
-    createjs.Sound.registerSound("sounds/alarm.wav", "alarm");
+let winning= new Image();
+    winning.src="images/winning.jpg"
+
+ createjs.Sound.registerSound("sounds/alarm.wav", "alarm");
 
 //---------Event Listeners-------------//
 
 document.addEventListener("keydown", (e)=> {
     if (e.keyCode ==37){
-        dogpos -=20
+        dogpos -=40
     } else if (e.keyCode == 39){
-        dogpos +=20
+        dogpos +=40
     }
 
     if (dogpos < 0) {
@@ -54,9 +57,9 @@ document.addEventListener("keydown", (e)=> {
     }
 });
 
-let button= document.getElementById("btn-start");
 
-button.addEventListener("click", (e)=> {
+
+canvas.addEventListener("click", (e)=> {
     gameStatus = "start";
     score = 0;
     lives = 3;
@@ -87,8 +90,14 @@ class Food {
                 delete activeFoods[this.foodId];
                 clearInterval(this.topInterval); 
 
+                let touchesDog = false;
+                if (this.foodX < dogpos && this.foodX + foodSizeW > dogpos) {
+                    touchesDog = true;
+                } else if (this.foodX > dogpos && this.foodX < dogpos + dogSizeW) {
+                    touchesDog = true;
+                }
 
-                if (this.foodX >dogpos && this.foodX < dogpos + dogSizeW){
+                if (touchesDog === true) {
                     console.log("Yummy!")
 
                     if(this.isBad == true){
@@ -98,18 +107,20 @@ class Food {
                         }
                     } else {
                         score++;
+                        if (score ==10){
+                            gameWin()
+                        }
                     }
                     
                 } else {
                     console.log("oh no!")
 
                     if(this.isBad == false){
-                    lives--; 
-                    if (lives ===0){
-                        gameOver()
-                    }}
-                
-                    
+                        lives--; 
+                        if (lives ===0){
+                            gameOver()
+                        }
+                    }   
                 } 
             }
         }, 5);
@@ -122,22 +133,12 @@ class Food {
 }
 
 
-//----------animations----------//
-
-
-
-
-
-//------score------//
-
-
-
 
 //-----functions----//
 function startGame(){
     // ctx.drawImage(kitchen, 0, 0 );
     // ctx.drawImage(dog, dogX, dogY );
-    createjs.Sound.stop("alarm");
+    //createjs.Sound.stop("alarm");
     
 
     setInterval(drawScreen, 20);
@@ -150,11 +151,18 @@ function startGame(){
 }
 
 function gameOver(){
-     alert("Game Over!")
+     //alert("Game Over!")
      gameStatus = "over";
-     createjs.Sound.play("alarm");
+     //createjs.Sound.play("alarm");
 }
 
+function gameWin(){
+    //alert("Game Over!")
+    gameStatus = "win";
+    //createjs.Sound.play("alarm");
+}
+
+//which screen to draw
 function drawScreen(){
     context.clearRect(0, 0, canvas.width, canvas.height);
     if (gameStatus == "splash"){
@@ -163,20 +171,24 @@ function drawScreen(){
         drawGame()
     } else if (gameStatus=="over"){
         drawOver()
+    } else if (gameStatus=="win"){
+        drawWin()
     }
 }
 
+//splash screen
 function drawSplash(){
     context.drawImage(splashImage, 0, 0, canvas.width, canvas.height);
-    context.fillStyle="#fff";
-    context.fillText('Hungie Games', (canvas.width/2)+5, (canvas.height/2)+5);
     context.fillStyle="#000";
-    context.font = '56px serif';
+    context.fillText('Click to start!', (canvas.width/2), (canvas.height/2) + 200);
+    context.fillStyle="#000";
+    context.font = '48px arial';
     context.textAlign = "center";
-    context.fillText('Hungie Games', canvas.width/2, canvas.height/2);
+    //context.fillText('Hungie Games', canvas.width/2, canvas.height/2);
     
 }
 
+//drawing game
 function drawGame(){
     context.textAlign="left";
     context.drawImage(kitchenImage, 0, 0, canvas.width, canvas.height);
@@ -187,22 +199,34 @@ function drawGame(){
        let food = activeFoods[foodId];
        food.draw();
     }
-    context.fillStyle="#000";
+    context.fillStyle="#ffffff";
     context.font = '24px serif';
-    context.fillText('Score:' + score, canvas.width-150, 50);
+    context.fillText('Score:' + score, canvas.width-150, 25);
 
-    context.fillStyle="#000";
+    context.fillStyle="#ffffff";
     context.font = '24px serif';
-    context.fillText('Lives:' + lives, 30, 50);
+    context.fillText('Lives:' + lives, 50, 25);
 }
 
+//win screen
+function drawWin(){
+    context.textAlign="center";
+    context.drawImage(winning, 0, 0, canvas.width, canvas.height);
+    context.fillStyle="#000";
+    context.font = '24px serif';
+    //context.fillText('Game Over', canvas.width/2, canvas.height/2);
+}
+
+//game over - losing
 function drawOver(){
     context.textAlign="center";
     context.drawImage(endScreen, 0, 0, canvas.width, canvas.height);
     context.fillStyle="#000";
     context.font = '24px serif';
-    context.fillText('Game Over', canvas.width/2, canvas.height/2);
+    //context.fillText('Game Over', canvas.width/2, canvas.height/2);
 }
+
+//adding food 
 function addFood(isBad, foodName){
     nextFoodId++;
     let foodId = nextFoodId.toString(); 
@@ -217,22 +241,7 @@ function addFood(isBad, foodName){
     activeFoods[foodId] = food;
 }
 
-//------splash screen--//
-
-
-
-
-//------start the game----//
-
-
-//------game over screen-----//
-
-
-
-//------collision-----//
-
 
 //-----start game----//
 startGame();
 
-//window.addEventListener("load", splash)
