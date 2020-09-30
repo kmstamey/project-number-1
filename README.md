@@ -107,11 +107,9 @@ https://trello.com/b/SkBi1kyn/project-1-hungie-games
 
 
 ### Git
-URls for the project repo and deploy
-https://github.com/kmstamey/project-number-1/edit/master/README.md
+https://kmstamey.github.io/project-number-1/
 
 
 
 ### Slides
-URls for the project presentation (slides)
-[Link Slides.com](http://slides.com)
+https://docs.google.com/presentation/d/12VG6pLm0QCxZ-7aoaFV8UdkOGENZbcyY54SNcFZt5oY/edit?usp=sharing
