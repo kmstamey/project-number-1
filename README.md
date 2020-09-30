@@ -21,44 +21,69 @@ Classes and methods definition.
 **index.js**
 
 buildSplashScreen(){}
+
 buildGameScreen(){}
+
 buildGameOverScreen(){}
-Game.js
 
 game (){}
+
 peanutButterLoop(){}
+
 cucumberLoop(){}
+
 pumpkinLoop(){}
+
 chocolateLoop(){}
+
 checkCollisions(){}
+
 clearCanvas(){}
+
 drawCanvas(){}
+
 GameOver(){}
+
 dog.js
 
 dog() {this.x; this.y; this.direction; this.size}
+
 draw() {}
+
 move() {}
+
 peanut butter.js
 
 peanutButter(){this.x; this.y; this.direction; this.size}
+
 draw(){}
+
 move(){}
+
 cucumber.js
 
 cucumber(){this.x; this.y; this.direction; this.size}
+
 draw(){}
+
 move(){}
+
 pumpkin.js
 
 pumpkin(){this.x; this.y; this.direction; this.size}
+
 draw(){}
+
 move(){}
+
 chocoate.js
 
 chocolate(){this.x; this.y; this.direction; this.size}
+
 draw(){}
+
 move(){}
+
 States & Transitions
 Definition of the different states and their transition (transition functions)
 

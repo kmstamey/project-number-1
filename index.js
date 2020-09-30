@@ -16,6 +16,9 @@ let score = 0;
 let lives = 3;
 let isGameOver= false;
 
+let foodSpeed = 5000;
+let foodInterval= null;
+
 const allFoods= [
     {name:"cucumber", isBad: false, image: "images/cucumber5.png"},
     {name:"pumpkin", isBad: false, image: "images/pumpkin3.png"},
@@ -39,8 +42,15 @@ let bobo= new Image();
 let winning= new Image();
     winning.src="images/winning.jpg"
 
- createjs.Sound.registerSound("sounds/alarm.wav", "alarm");
+ createjs.Sound.registerSound("sounds/background.mp3", "background");
 
+ createjs.Sound.registerSound("sounds/winning.mp3", "win");
+
+ createjs.Sound.registerSound("sounds/losing.mp3", "loser");
+
+ createjs.Sound.registerSound("sounds/yeah.mp3", "yeah");
+
+ createjs.Sound.registerSound("sounds/nope.mp3", "nope");
 //---------Event Listeners-------------//
 
 document.addEventListener("keydown", (e)=> {
@@ -60,9 +70,11 @@ document.addEventListener("keydown", (e)=> {
 
 
 canvas.addEventListener("click", (e)=> {
+    createjs.Sound.play("background");
     gameStatus = "start";
     score = 0;
     lives = 3;
+    foodSpeed = 5000;
 });
 
 
@@ -100,12 +112,15 @@ class Food {
                 if (touchesDog === true) {
                     console.log("Yummy!")
 
+
                     if(this.isBad == true){
+                       createjs.Sound.play("nope")
                         lives--; 
                         if (lives ===0){
                             gameOver()
                         }
                     } else {
+                        createjs.Sound.play("yeah")
                         score++;
                         if (score ==10){
                             gameWin()
@@ -138,27 +153,53 @@ class Food {
 function startGame(){
     // ctx.drawImage(kitchen, 0, 0 );
     // ctx.drawImage(dog, dogX, dogY );
-    //createjs.Sound.stop("alarm");
+    //;
     
-
+    
     setInterval(drawScreen, 20);
 
+    
+    foodInterval = setInterval(() => {
+        if (gameStatus == "start"){
+            addFood();
+            }   
+        }, 
+        foodSpeed
+    );
+
     setInterval(() => {
-    if (gameStatus == "start"){
-        addFood();
-         }   
-    }, 2000);
+        if (gameStatus === 'start') {
+
+            clearInterval(clearInterval);
+
+            foodSpeed -= 200;
+
+            foodInterval = setInterval(() => {
+                if (gameStatus == "start"){
+                    addFood();
+                }
+
+            }, foodSpeed);
+        }
+    },
+        5000
+    );
 }
 
 function gameOver(){
      //alert("Game Over!")
      gameStatus = "over";
+     createjs.Sound.stop("background")
+     
+    createjs.Sound.play("loser")
      //createjs.Sound.play("alarm");
 }
 
 function gameWin(){
     //alert("Game Over!")
     gameStatus = "win";
+    createjs.Sound.stop("background")
+    createjs.Sound.play("win")
     //createjs.Sound.play("alarm");
 }
 
