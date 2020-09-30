@@ -88,32 +88,59 @@ States & Transitions
 Definition of the different states and their transition (transition functions)
 
 splashScreen
+
 gameScreen
+
 gameoverScreen
+
 winScreen
+
 Task
+
 main - buildDom
+
 main - buildSplashScreen
+
 main - addEventListener
+
 main - buildGameScreen
+
 main - buildGameOverScreen
+
 game - startLoop
+
 game - buildCanvas
+
 game - updateCanvas
+
 game - drawCanvas
+
 cucumber - draw
+
 cucumber - move
+
 pumpkin - draw
+
 pumpkin- move
+
 peanut butter - draw
+
 peanut butter- move
+
 chocolate- draw
+
 chocolate- move
+
 game - addFood
+
 dog - draw
+
 dog - move
+
 game - checkCollision
+
 game - GameOver
+
 game - addEventListener
 
 **Links**

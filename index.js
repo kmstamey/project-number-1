@@ -6,12 +6,12 @@ let context= canvas.getContext("2d");
 // set of variables------//
 let gameStatus= "splash";
 let dogpos = 250;
-let dogSizeW= 100;
-let dogSizeH= 100;
+let dogSizeW= 150;
+let dogSizeH= 150;
 let nextFoodId = 0;
 let activeFoods= {};
-let foodSizeW= 75;
-let foodSizeH= 75;
+let foodSizeW= 65;
+let foodSizeH= 65;
 let score = 0;
 let lives = 3;
 let isGameOver= false;
@@ -37,7 +37,7 @@ let endScreen = new Image();
     endScreen.src="images/gameover2.png"
 
 let bobo= new Image();
-    bobo.src="images/dog-12.png"
+    bobo.src="images/obi.png"
 
 let winning= new Image();
     winning.src="images/winning.jpg"
