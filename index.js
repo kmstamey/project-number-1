@@ -21,6 +21,9 @@ let foodInterval= null;
 
 let instructionsEl = document.getElementById('instructions');
 
+//dog speed slowing down
+let dogSpeed = 5;
+
 const allFoods= [
     {name:"cucumber", isBad: false, image: "images/cucumber5.png"},
     {name:"pumpkin", isBad: false, image: "images/pumpkin3.png"},
@@ -69,9 +72,9 @@ setInterval(
         }
 
         if (leftDown === true) {
-            dogpos -=5
+            dogpos -= dogSpeed;
         } else if (rightDown === true){
-            dogpos +=5
+            dogpos += dogSpeed;
         }
     
         if (dogpos < 0) {
@@ -167,6 +170,7 @@ class Food {
                         let instance= createjs.Sound.play("nope")
                         instance.volume = 0.1;
                         lives--; 
+                        dogSpeed = dogSpeed -2
                         if (lives ===0){
                             gameOver()
                         }
@@ -186,6 +190,7 @@ class Food {
 
                     if(this.isBad == false){
                         lives--; 
+                        dogSpeed = dogSpeed -2
                         if (lives ===0){
                             gameOver()
                         }
@@ -241,15 +246,18 @@ function gameOver(){
      gameStatus = "over";
      createjs.Sound.stop("background")
      
-    createjs.Sound.play("loser")
+    let instance = createjs.Sound.play("loser")
+    instance.volume = 0.1;
      //createjs.Sound.play("alarm");
 }
 
 function gameWin(){
     //alert("Game Over!")
+    
     gameStatus = "win";
     createjs.Sound.stop("background")
-    createjs.Sound.play("win")
+    let instance = createjs.Sound.play("win")
+    instance.volume=0.5;
     //createjs.Sound.play("alarm");
 }
 

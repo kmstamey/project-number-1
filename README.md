@@ -1,5 +1,5 @@
 **Hungie Games**
-*Description*
+
 Are you hungie? It's snack time for Obi the dog and he is very hungie! As the foods fall down, you have to catch the good foods (peanut butter, cucumber and pumpkin) and avoid the bad (chocolate). The game ends after losing 3 lives from catching a bad food (grapes, chocolate) or letting a good food pass by.
 
 Obi needs lots of snacks and the more he eats the faster you need to feed him! After every 5 foods, the speed will increase. You win the game after you reach 20 treats caught!
