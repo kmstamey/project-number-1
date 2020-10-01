@@ -95,7 +95,7 @@ gameoverScreen
 
 winScreen
 
-Task
+**Task**
 
 main - buildDom
 
@@ -144,6 +144,7 @@ game - GameOver
 game - addEventListener
 
 **Links**
+
 *Trello*
 https://trello.com/b/SkBi1kyn/project-1-hungie-games
 
