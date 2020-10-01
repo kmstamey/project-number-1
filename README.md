@@ -1,8 +1,8 @@
 **Hungie Games**
 *Description*
-Are you hungie? It's snack time for Obi the dog and he is very hungie! As the foods fall down, you have to catch the good foods (peanut butter, cucumber and pumpkin) and avoid the bad (chocolate). The game ends when 3 good foods pass by you or when you catch chocolate.
+Are you hungie? It's snack time for Obi the dog and he is very hungie! As the foods fall down, you have to catch the good foods (peanut butter, cucumber and pumpkin) and avoid the bad (chocolate). The game ends after losing 3 lives from catching a bad food (grapes, chocolate) or letting a good food pass by.
 
-Obi needs lots of snacks and the more he eats the faster you need to feed him! After every 5 foods, the speed will increase. You win the game after you reach 25 treats caught!
+Obi needs lots of snacks and the more he eats the faster you need to feed him! After every 5 foods, the speed will increase. You win the game after you reach 20 treats caught!
 
 **MVP (DOM - CANVAS)**
 
@@ -10,7 +10,7 @@ one dog that will move horizontally
 foods will fall randomly from the top of the screen -foods include: pumpkin, cucumber, peanut butter
 letting 3 good foods pass by the dog will result in losing the game
 increasing speed of food falling every 5 foods dropped
-Win the game after catching 25 foods
+Win the game after catching 20 foods
 
 **Backlog**
 

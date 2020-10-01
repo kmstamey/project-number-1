@@ -19,4 +19,33 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+   
+}
+
+canvas {
+    display: none;
+}
+
+canvas.show {
+    display: block;
+}
+
+#instructions {
+    width: 900px;
+    height: 500px;
+    display: block;
+    text-align: center;
+    font-family: 'Sansita Swashed', cursive;
+    background: url("images/splash2.png");
+    background-size: 100% 100%;
+    padding-top:75px;
+    
+}
+
+#instructions.hidden {
+    display: none;
+}
+
+#startClick{
+    margin-top: 300px;
 }
